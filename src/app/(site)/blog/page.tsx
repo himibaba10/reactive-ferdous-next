@@ -25,7 +25,7 @@ export default function BlogIndexPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        {posts.map((post) => (
+        {posts.map((post, index) => (
           <article
             key={post.slug}
             className="group flex flex-col border border-zinc-800 rounded-2xl overflow-hidden bg-zinc-900/30 hover:border-zinc-600 transition-colors"
@@ -36,6 +36,7 @@ export default function BlogIndexPage() {
                 alt={post.thumbnail.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
+                priority={index < 2}
                 className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
             </Link>
