@@ -1,16 +1,17 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 import { useAboutSlider } from '@/hooks/useAboutSlider';
 
 export type AboutSlideImage = { src: string; alt: string };
 
+/** Only animate opacity/scale/y (compositor). Position via CSS, not top/right. */
 export default function AboutSlider({ images }: { images: AboutSlideImage[] }) {
   const ordered = useAboutSlider(images);
 
   return (
-    <motion.div
+    <m.div
       initial={{ x: 32 }}
       whileInView={{ x: 0 }}
       viewport={{ once: true, amount: 0.2, margin: '80px' }}
@@ -23,20 +24,27 @@ export default function AboutSlider({ images }: { images: AboutSlideImage[] }) {
         const isBack = idx === 2;
         const isHidden = idx > 2;
 
+        const right = isFront ? '30%' : isMid ? '15%' : isBack ? '0%' : '30%';
+        const top = isFront ? '7rem' : isMid ? '3rem' : isBack ? '0' : '7rem';
+
         return (
-          <motion.div
+          <m.div
             key={img.src}
             initial={false}
             animate={{
-              top: isFront ? '7rem' : isMid ? '3rem' : isBack ? '0rem' : '7rem',
-              right: isFront ? '30%' : isMid ? '15%' : isBack ? '0%' : '30%',
-              zIndex: isFront ? 20 : isMid ? 10 : isBack ? 0 : 30,
               opacity: isFront ? 1 : isMid ? 0.7 : isBack ? 0.4 : 0,
               scale: isFront ? 1 : isMid ? 0.95 : isBack ? 0.9 : 1.1,
             }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}
-            style={{ position: 'absolute' }}
-            className={`w-3/5 aspect-[5/6] ${isHidden ? 'pointer-events-none' : ''}`}
+            style={{
+              position: 'absolute',
+              top,
+              right,
+              zIndex: isFront ? 20 : isMid ? 10 : isBack ? 0 : 30,
+            }}
+            className={`w-3/5 aspect-[5/6] will-change-transform ${
+              isHidden ? 'pointer-events-none' : ''
+            }`}
           >
             <Image
               src={img.src}
@@ -48,9 +56,9 @@ export default function AboutSlider({ images }: { images: AboutSlideImage[] }) {
                 isFront ? 'border-2 border-secondary/70' : 'border-zinc-700/50'
               }`}
             />
-          </motion.div>
+          </m.div>
         );
       })}
-    </motion.div>
+    </m.div>
   );
 }

@@ -1,13 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 import clientReviewImage from '@/assets/Client Review.webp';
 
 /** Animate `x` (transform), not `left` — avoids layout thrashing. */
 export default function HeroLeftImage() {
   return (
-    <motion.div
+    <m.div
       className="absolute left-[-2rem] top-0"
       initial={{ x: '-23rem', rotate: -5 }}
       whileInView={{ x: 0 }}
@@ -23,6 +23,6 @@ export default function HeroLeftImage() {
         fetchPriority="low"
         style={{ width: 'auto', height: 'auto' }}
       />
-    </motion.div>
+    </m.div>
   );
 }

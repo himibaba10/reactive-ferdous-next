@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import * as m from 'motion/react-m';
+import { AnimatePresence } from 'motion/react';
 import { MdClose } from "react-icons/md";
 import PrimaryButton from "../ui/PrimaryButton";
 
@@ -32,7 +33,7 @@ const Popup = () => {
     <AnimatePresence>
       {isVisible && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -87,7 +88,7 @@ const Popup = () => {
             >
               No thanks, maybe later
             </button>
-          </motion.div>
+          </m.div>
         </div>
       )}
     </AnimatePresence>

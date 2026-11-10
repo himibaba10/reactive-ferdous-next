@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 import AnimatedHeading from '@/components/client/AnimatedHeading';
 import PrimaryButton from '@/ui/PrimaryButton';
 
@@ -11,7 +11,7 @@ import PrimaryButton from '@/ui/PrimaryButton';
  */
 export default function AboutIntro() {
   return (
-    <motion.div
+    <m.div
       initial={{ x: -32 }}
       whileInView={{ x: 0 }}
       viewport={{ once: true, amount: 0.2, margin: '80px' }}
@@ -34,6 +34,6 @@ export default function AboutIntro() {
       <a href="#portfolio">
         <PrimaryButton>SEE OUR PROJECTS</PrimaryButton>
       </a>
-    </motion.div>
+    </m.div>
   );
 }

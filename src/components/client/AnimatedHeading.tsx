@@ -1,7 +1,7 @@
 'use client';
 
 import type { ElementType } from 'react';
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 
 type AnimatedHeadingProps = {
   children: string;
@@ -10,8 +10,10 @@ type AnimatedHeadingProps = {
 };
 
 /**
- * Per-letter reveal. Uses compositor-friendly opacity/y only, and
- * viewport.once so observers don't keep firing on scroll (Motion perf guide).
+ * IMPORTANT (LazyMotion async): never use initial opacity: 0 on text.
+ * `initial` styles apply before features load, so opacity:0 stays invisible
+ * until domAnimation chunks arrive — felt like a multi-second blank heading.
+ * @see https://motion.dev/docs/react-lazy-motion
  */
 export default function AnimatedHeading({
   children,
@@ -21,21 +23,20 @@ export default function AnimatedHeading({
   return (
     <Component className={`uppercase ${className}`}>
       {children.split('').map((char, index) => (
-        <motion.span
+        <m.span
           key={`${char}-${index}`}
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          // Fire early so headings aren't stuck dim waiting for a deep scroll
-          viewport={{ once: true, amount: 0.2, margin: '60px' }}
+          initial={{ y: 10 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true, amount: 0.2, margin: '80px' }}
           transition={{
-            delay: Math.min(index * 0.03, 0.45),
-            duration: 0.28,
+            delay: Math.min(index * 0.025, 0.35),
+            duration: 0.25,
             ease: [0.22, 1, 0.36, 1],
           }}
           className="inline-block font-bebas"
         >
           {char === ' ' ? '\u00A0' : char}
-        </motion.span>
+        </m.span>
       ))}
     </Component>
   );

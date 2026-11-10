@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 import {
   MdWeb,
   MdOutlineDesignServices,
@@ -56,28 +56,27 @@ const services: ServiceItem[] = [
 
 export default function ServicesGrid() {
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: {},
     visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 },
+      transition: { staggerChildren: 0.12 },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    hidden: { y: 16 },
+    visible: { y: 0, transition: { duration: 0.4 } },
   };
 
   return (
-    <motion.div
+    <m.div
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-100px' }}
+      viewport={{ once: true, amount: 0.15, margin: '60px' }}
     >
       {services.map((service) => (
-        <motion.div
+        <m.div
           key={service.id}
           variants={itemVariants}
           className="bg-zinc-800/50 border border-zinc-700/50 p-6 rounded-2xl hover:bg-zinc-800 transition-colors duration-300 group flex flex-col"
@@ -99,8 +98,8 @@ export default function ServicesGrid() {
               aria-hidden="true"
             />
           </Link>
-        </motion.div>
+        </m.div>
       ))}
-    </motion.div>
+    </m.div>
   );
 }

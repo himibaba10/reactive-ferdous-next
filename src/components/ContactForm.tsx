@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 import { useEffect } from 'react';
 import { FaRegEnvelope, FaRegStickyNote } from 'react-icons/fa';
 import { LuUser } from 'react-icons/lu';
@@ -48,22 +48,22 @@ const ContactForm = () => {
           className='absolute -left-[9999px] h-0 w-0 opacity-0'
         />
 
-        <motion.div
+        <m.div
           initial={{ scale: 1 }}
           whileTap={{ scale: 1.1 }}
           transition={{ duration: 0.5 }}
           className='relative text-primary'
         >
           <LuUser className='absolute z-10 text-2xl top-[14px] left-2.5 text-primary' />
-          <motion.input
+          <m.input
             type='text'
             name='name'
             required
             placeholder='Enter Name'
             className={fieldClass}
           />
-        </motion.div>
-        <motion.div
+        </m.div>
+        <m.div
           initial={{ scale: 1 }}
           whileTap={{ scale: 1.1 }}
           transition={{ duration: 0.5 }}
@@ -77,8 +77,8 @@ const ContactForm = () => {
             placeholder='Enter Email'
             className={fieldClass}
           />
-        </motion.div>
-        <motion.div
+        </m.div>
+        <m.div
           initial={{ scale: 1 }}
           whileTap={{ scale: 1.1 }}
           transition={{ duration: 0.5 }}
@@ -92,7 +92,7 @@ const ContactForm = () => {
             placeholder="Have something to say? We'd love to hear! :D"
             className={`${fieldClass} resize-none`}
           />
-        </motion.div>
+        </m.div>
         <div className='self-end'>
           <PrimaryButton type='submit' disabled={state.submitting}>
             {state.submitting ? 'Submitting' : 'Mail Me!'}

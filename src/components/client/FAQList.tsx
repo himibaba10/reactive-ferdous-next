@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
 export type FaqItem = { question: string; answer: string };
@@ -31,16 +31,16 @@ export default function FAQList({ faqs }: { faqs: FaqItem[] }) {
               className="w-full px-6 py-5 flex justify-between items-center text-left focus:outline-none hover:bg-zinc-800/50 transition-colors"
             >
               <span className="text-lg font-bold text-white">{faq.question}</span>
-              <motion.div
+              <m.div
                 animate={{ rotate: isOpen ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
                 className="text-secondary"
               >
                 <MdKeyboardArrowDown size={24} />
-              </motion.div>
+              </m.div>
             </button>
 
-            <motion.div
+            <m.div
               id={`faq-answer-${index}`}
               initial={false}
               animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
@@ -51,7 +51,7 @@ export default function FAQList({ faqs }: { faqs: FaqItem[] }) {
               <div className="px-6 pb-5 pt-2 text-zinc-400 leading-relaxed border-t border-zinc-700/30">
                 {faq.answer}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         );
       })}

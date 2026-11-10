@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 
 const decor = [
   {
@@ -46,7 +46,7 @@ export default function WebDevelopmentHeroDecor() {
   return (
     <>
       {decor.map((item) => (
-        <motion.div
+        <m.div
           key={item.src}
           initial={item.initial}
           animate={item.animate}
@@ -62,7 +62,7 @@ export default function WebDevelopmentHeroDecor() {
             loading="lazy"
             className="object-cover"
           />
-        </motion.div>
+        </m.div>
       ))}
     </>
   );

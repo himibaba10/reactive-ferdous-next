@@ -1,7 +1,7 @@
 'use client';
 
 import { MdArrowOutward } from "react-icons/md";
-import { motion } from "motion/react";
+import * as m from 'motion/react-m';
 
 const ContactButton = ({ children }) => {
   const button = { changePosition: { background: "rgba(232,248,139,1)" } };
@@ -16,7 +16,7 @@ const ContactButton = ({ children }) => {
   };
 
   return (
-    <motion.a
+    <m.a
       initial={{
         background: "rgba(232,248,139,0)",
         boxShadow: "0.5px 0px 1.3px rgba(255,255,255,1)",
@@ -29,21 +29,21 @@ const ContactButton = ({ children }) => {
       rel="noopener noreferrer"
       className="uppercase text-sm sm:text-lg inline-flex items-center sm:gap-2 p-1 pl-1 sm:pl-4 rounded-full relative"
     >
-      <motion.span
+      <m.span
         className="text-white mx-3 relative"
         transition={{ duration: 0.3 }}
         variants={span}
       >
         {children}
-      </motion.span>
-      <motion.span
+      </m.span>
+      <m.span
         variants={icon}
         transition={{ duration: 0.3 }}
         className="bg-secondary p-2 rounded-full relative text-black"
       >
         <MdArrowOutward size={25} />
-      </motion.span>
-    </motion.a>
+      </m.span>
+    </m.a>
   );
 };
 

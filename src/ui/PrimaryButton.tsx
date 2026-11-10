@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 import { MdArrowOutward } from 'react-icons/md';
 
 type PrimaryButtonProps = {
@@ -43,7 +43,7 @@ const PrimaryButton = ({
 
   if (href) {
     return (
-      <motion.a
+      <m.a
         href={href}
         target={target}
         rel={rel}
@@ -53,22 +53,22 @@ const PrimaryButton = ({
         whileHover="changePosition"
         className={`${width} uppercase bg-secondary border border-black text-black px-3 sm:px-10 py-3 rounded-full font-medium inline-flex items-center justify-center relative ${className}`}
       >
-        <motion.span
+        <m.span
           variants={icon}
           initial={{ scale: 0 }}
           className="bg-primary p-2 rounded-full absolute left-1 text-white"
         >
           <MdArrowOutward size={25} />
-        </motion.span>
-        <motion.span initial={{ left: 0 }} variants={span} className="relative">
+        </m.span>
+        <m.span initial={{ left: 0 }} variants={span} className="relative">
           {children}
-        </motion.span>
-      </motion.a>
+        </m.span>
+      </m.a>
     );
   }
 
   return (
-    <motion.button
+    <m.button
       type={type}
       disabled={disabled}
       onClick={onClick}
@@ -77,17 +77,17 @@ const PrimaryButton = ({
       whileHover="changePosition"
       className={`${width} uppercase bg-secondary border border-black text-black px-3 sm:px-10 py-3 rounded-full font-medium inline-flex items-center justify-center relative ${className}`}
     >
-      <motion.span
+      <m.span
         variants={icon}
         initial={{ scale: 0 }}
         className="bg-primary p-2 rounded-full absolute left-1 text-white"
       >
         <MdArrowOutward size={25} />
-      </motion.span>
-      <motion.span initial={{ left: 0 }} variants={span} className="relative">
+      </m.span>
+      <m.span initial={{ left: 0 }} variants={span} className="relative">
         {children}
-      </motion.span>
-    </motion.button>
+      </m.span>
+    </m.button>
   );
 };
 

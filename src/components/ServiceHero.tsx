@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 import numberBackground from '../assets/Numbers background.webp';
 import Heading from '../ui/Heading';
 import PrimaryButton from '../ui/PrimaryButton';
@@ -41,7 +41,7 @@ const ServiceHero = ({
           </Heading>{' '}
 
           {highlightedText && (
-            <motion.div
+            <m.div
               className='text-nowrap mx-auto py-4 mt-2'
               initial={{ width: '0%', overflow: 'hidden' }}
               animate={{ width: '100%' }}
@@ -53,7 +53,7 @@ const ServiceHero = ({
               >
                 {highlightedText}
               </span>
-            </motion.div>
+            </m.div>
           )}
         </h1>
 

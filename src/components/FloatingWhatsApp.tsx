@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { motion, AnimatePresence } from "motion/react";
+import * as m from 'motion/react-m';
+import { AnimatePresence } from 'motion/react';
 
 const FloatingWhatsApp = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,7 +28,7 @@ const FloatingWhatsApp = () => {
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.a
+        <m.a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -43,7 +44,7 @@ const FloatingWhatsApp = () => {
           <div className="absolute inset-0 rounded-full border-2 border-[#25D366] animate-ping opacity-75 group-hover:hidden"></div>
           
           <FaWhatsapp size={35} className="relative z-10" aria-hidden="true" focusable="false" />
-        </motion.a>
+        </m.a>
       )}
     </AnimatePresence>
   );

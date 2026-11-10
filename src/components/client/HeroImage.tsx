@@ -1,14 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 
 const HERO_IMG = '/hero-main.webp';
 
 export default function HeroImage() {
   return (
     <div className="relative inline-block">
-      <motion.div
+      <m.div
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}

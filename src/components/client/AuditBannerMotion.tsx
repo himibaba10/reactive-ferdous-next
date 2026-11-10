@@ -1,7 +1,7 @@
 'use client';
 
 import PrimaryButton from '@/ui/PrimaryButton';
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 import { MdSearch } from 'react-icons/md';
 
 const CALENDLY_URL = 'https://calendly.com/himibaba/new-meeting';
@@ -19,12 +19,12 @@ export default function AuditBannerMotion({
     <section className="w-full py-16 px-4 bg-zinc-900 border-y border-secondary/30 relative overflow-hidden my-10 shadow-[0_0_50px_rgba(64,140,255,0.1)]">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-64 bg-secondary/20 filter blur-[120px] z-0 pointer-events-none" />
 
-      <motion.div
+      <m.div
         className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10"
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: '-50px' }}
-        transition={{ duration: 0.5 }}
+        initial={{ scale: 0.98, y: 12 }}
+        whileInView={{ scale: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3, margin: '40px' }}
+        transition={{ duration: 0.4 }}
       >
         <div className="flex-1 text-center md:text-left flex flex-col md:flex-row items-center gap-6">
           <div className="bg-secondary text-black p-4 rounded-full hidden md:block shadow-[0_0_20px_rgba(64,140,255,0.5)]">
@@ -54,7 +54,7 @@ export default function AuditBannerMotion({
             Or message us on WhatsApp
           </a>
         </div>
-      </motion.div>
+      </m.div>
     </section>
   );
 }

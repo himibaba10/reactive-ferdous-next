@@ -1,13 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'motion/react';
+import * as m from 'motion/react-m';
 import expertiseImg from '@/assets/My expertise image.webp';
 
 /** Animate `x` (transform), not `right` — avoids layout thrashing. */
 export default function HeroRightImage() {
   return (
-    <motion.div
+    <m.div
       className="absolute right-[-3rem] top-64 sm:top-20"
       initial={{ x: '22rem', rotate: 7 }}
       whileInView={{ x: 0 }}
@@ -23,6 +23,6 @@ export default function HeroRightImage() {
         fetchPriority="low"
         style={{ width: 'auto', height: 'auto' }}
       />
-    </motion.div>
+    </m.div>
   );
 }
