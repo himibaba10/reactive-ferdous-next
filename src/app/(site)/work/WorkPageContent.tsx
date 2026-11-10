@@ -42,7 +42,8 @@ export default function Work() {
                       src={study.heroImage.src}
                       alt={study.heroImage.alt}
                       fill
-                      sizes='(max-width: 768px) 100vw, 50vw'
+                      sizes='(max-width: 768px) 92vw, 560px'
+                      quality={60}
                       loading='lazy'
                       className='object-cover object-top'
                     />

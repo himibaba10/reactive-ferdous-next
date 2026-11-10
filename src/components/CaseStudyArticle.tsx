@@ -126,6 +126,8 @@ export default function CaseStudyArticle({ study }: { study: CaseStudyData }) {
             height={study.heroImage.height}
             priority
             fetchPriority="high"
+            sizes="(max-width: 1152px) 92vw, 1152px"
+            quality={70}
             className="w-full rounded-3xl border border-zinc-800"
             style={{ width: '100%', height: 'auto' }}
           />
@@ -207,6 +209,8 @@ export default function CaseStudyArticle({ study }: { study: CaseStudyData }) {
                   width={img.width}
                   height={img.height}
                   loading="lazy"
+                  sizes="(max-width: 768px) 92vw, 560px"
+                  quality={60}
                   className="w-full rounded-2xl border border-zinc-800"
                   style={{ width: '100%', height: 'auto' }}
                 />

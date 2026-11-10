@@ -123,6 +123,8 @@ export default async function Reviews() {
               alt="Client feedback for Ferdous Ahmed"
               width={800}
               height={600}
+              sizes="(max-width: 640px) 92vw, (max-width: 1024px) 45vw, 380px"
+              quality={60}
               loading="lazy"
               className="w-full rounded-2xl border border-zinc-800"
               style={{ width: '100%', height: 'auto' }}

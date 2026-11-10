@@ -33,7 +33,9 @@ export const ProjectImages = ({ projects }: { projects?: ProjectSlide[] }) => {
                 src={slide.img}
                 alt={slide.title || 'Project'}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                // Card is ~250px tall / ~380px wide on desktop — don't request full-viewport widths.
+                sizes="(max-width: 768px) 92vw, (max-width: 1024px) 45vw, 380px"
+                quality={60}
                 loading="lazy"
                 className="object-cover object-top group-hover:object-[0_100%] transition-[object-position] duration-[3s] ease-in-out"
               />

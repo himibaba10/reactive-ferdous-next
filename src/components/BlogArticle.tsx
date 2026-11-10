@@ -68,7 +68,8 @@ export default function BlogArticle({ post }: { post: BlogPost }) {
             alt={post.thumbnail.alt}
             fill
             priority
-            sizes="(max-width: 896px) 100vw, 896px"
+            sizes="(max-width: 896px) 92vw, 896px"
+            quality={70}
             className="object-cover"
           />
         </div>

@@ -37,6 +37,9 @@ const nextConfig: NextConfig = {
   partialPrefetching: false,
   images: {
     remotePatterns,
+    // Prefer modern codecs; portfolio thumbs pass quality={60}.
+    formats: ["image/avif", "image/webp"],
+    qualities: [60, 70, 75],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
   turbopack: {

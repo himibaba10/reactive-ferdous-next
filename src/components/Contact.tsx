@@ -1,5 +1,14 @@
-import ContactForm from "./ContactForm";
-import ContactInfo from "./ContactInfo";
+import dynamic from 'next/dynamic';
+import ContactInfo from './ContactInfo';
+
+const ContactForm = dynamic(() => import('./ContactForm'), {
+  loading: () => (
+    <div
+      className="min-h-[320px] rounded-xl bg-zinc-800/30 border border-zinc-700/40 animate-pulse"
+      aria-hidden
+    />
+  ),
+});
 
 const Contact = () => {
   return (

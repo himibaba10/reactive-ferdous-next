@@ -40,7 +40,8 @@ export default async function BlogIndexPage() {
                 src={post.thumbnail.src}
                 alt={post.thumbnail.alt}
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 92vw, 560px"
+                quality={60}
                 priority={index < 2}
                 className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
