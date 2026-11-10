@@ -3,7 +3,8 @@ import { cacheLife } from 'next/cache';
 
 async function Footer() {
   'use cache';
-  cacheLife('days');
+  // Rarely changes — don't drag page revalidate windows down to "days".
+  cacheLife('max');
 
   const year = new Date().getFullYear();
 

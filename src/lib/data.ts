@@ -1,4 +1,5 @@
-import { cacheLife } from 'next/cache';
+import { cacheLife, cacheTag } from 'next/cache';
+import { CACHE_TAGS } from '@/lib/cache';
 import { COLLECTIONS, getDb } from '@/lib/mongodb';
 import { serializeDocs } from '@/lib/serialize';
 
@@ -33,9 +34,14 @@ export type LogoDoc = {
   title?: string;
 };
 
+/**
+ * Mongo content: long TTL + tag. Admin APIs call `revalidateContent` so
+ * updates show up immediately instead of waiting for the profile window.
+ */
 export async function getProjects(category?: string): Promise<ProjectDoc[]> {
   'use cache';
-  cacheLife('minutes');
+  cacheTag(CACHE_TAGS.projects);
+  cacheLife('hours');
 
   try {
     const db = await getDb();
@@ -60,7 +66,8 @@ export async function getWebProjects(): Promise<ProjectDoc[]> {
 
 export async function getReviews(): Promise<ReviewDoc[]> {
   'use cache';
-  cacheLife('minutes');
+  cacheTag(CACHE_TAGS.reviews);
+  cacheLife('hours');
 
   try {
     const db = await getDb();
@@ -78,7 +85,8 @@ export async function getReviews(): Promise<ReviewDoc[]> {
 
 export async function getLogos(): Promise<LogoDoc[]> {
   'use cache';
-  cacheLife('minutes');
+  cacheTag(CACHE_TAGS.logos);
+  cacheLife('hours');
 
   try {
     const db = await getDb();

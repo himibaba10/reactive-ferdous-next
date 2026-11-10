@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { cacheLife } from 'next/cache';
 import { getPublishedPosts } from '@/data/posts';
 import { createPageMetadata } from '@/lib/seo';
 import Heading from '@/ui/Heading';
@@ -11,7 +12,11 @@ export const metadata = createPageMetadata({
   path: '/blog',
 });
 
-export default function BlogIndexPage() {
+/** Static posts in repo — cache until next deploy (no admin CMS). */
+export default async function BlogIndexPage() {
+  'use cache';
+  cacheLife('max');
+
   const posts = getPublishedPosts();
 
   return (

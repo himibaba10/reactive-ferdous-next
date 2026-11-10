@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { AuthError, jsonError, requireAdmin } from '@/lib/auth';
+import { CACHE_TAGS, revalidateContent } from '@/lib/cache';
 import { COLLECTIONS, getDb } from '@/lib/mongodb';
 import { serializeDocs } from '@/lib/serialize';
 
@@ -43,6 +44,7 @@ export async function POST(req: NextRequest) {
 
     const db = await getDb();
     const result = await db.collection(COLLECTIONS.reviews).insertOne(doc);
+    revalidateContent(CACHE_TAGS.reviews);
     return NextResponse.json({
       data: { _id: result.insertedId.toHexString(), ...doc },
     });

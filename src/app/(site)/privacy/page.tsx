@@ -1,3 +1,4 @@
+import { cacheLife } from "next/cache";
 import { createPageMetadata } from "@/lib/seo";
 import Privacy from "./PrivacyPageContent";
 
@@ -8,6 +9,8 @@ export const metadata = createPageMetadata({
   path: "/privacy",
 });
 
-export default function PrivacyPage() {
+export default async function PrivacyPage() {
+  "use cache";
+  cacheLife("max");
   return <Privacy />;
 }

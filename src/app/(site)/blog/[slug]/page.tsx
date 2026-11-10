@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { cacheLife } from 'next/cache';
 import BlogArticle, { BlogNotFound } from '@/components/BlogArticle';
 import JsonLd from '@/components/JsonLd';
 import { getPostBySlug, getPublishedPosts } from '@/data/posts';
@@ -40,6 +41,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function BlogPostPage({ params }: PageProps) {
+  'use cache';
+  cacheLife('max');
+
   const { slug } = await params;
   const post = getPostBySlug(slug);
 

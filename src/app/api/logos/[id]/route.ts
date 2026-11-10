@@ -1,6 +1,7 @@
 import { ObjectId } from 'mongodb';
 import { NextRequest, NextResponse } from 'next/server';
 import { AuthError, jsonError, requireAdmin } from '@/lib/auth';
+import { CACHE_TAGS, revalidateContent } from '@/lib/cache';
 import { COLLECTIONS, getDb } from '@/lib/mongodb';
 import { serializeDoc } from '@/lib/serialize';
 
@@ -33,6 +34,7 @@ export async function PATCH(req: NextRequest, ctx: Ctx) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
 
+    revalidateContent(CACHE_TAGS.logos);
     return NextResponse.json({ data: serializeDoc(result) });
   } catch (error) {
     if (error instanceof AuthError) return jsonError(error);
@@ -58,6 +60,7 @@ export async function DELETE(req: NextRequest, ctx: Ctx) {
       return NextResponse.json({ error: 'Not found' }, { status: 404 });
     }
 
+    revalidateContent(CACHE_TAGS.logos);
     return NextResponse.json({ ok: true });
   } catch (error) {
     if (error instanceof AuthError) return jsonError(error);

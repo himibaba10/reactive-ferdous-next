@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { cacheLife } from "next/cache";
 import CaseStudyArticle, {
   CaseStudyNotFound,
   type CaseStudyData,
@@ -39,6 +40,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function CaseStudyPage({ params }: PageProps) {
+  "use cache";
+  cacheLife("max");
+
   const { slug } = await params;
   const study = caseStudies.find(
     (item) => (item as CaseStudyData).slug === slug && (item as CaseStudyData).published

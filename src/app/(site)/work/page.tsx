@@ -1,3 +1,4 @@
+import { cacheLife } from "next/cache";
 import { createPageMetadata } from "@/lib/seo";
 import Work from "./WorkPageContent";
 
@@ -8,6 +9,9 @@ export const metadata = createPageMetadata({
   path: "/work",
 });
 
-export default function WorkPage() {
+/** Case study index is file-based — cache until deploy. */
+export default async function WorkPage() {
+  "use cache";
+  cacheLife("max");
   return <Work />;
 }
