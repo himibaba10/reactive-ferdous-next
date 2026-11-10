@@ -1,16 +1,15 @@
 import Image from 'next/image';
-import type { ProjectDoc } from '@/lib/data';
 
-type ProjectSlide = Pick<
-  ProjectDoc,
-  | 'id'
-  | 'title'
-  | 'img'
-  | 'live'
-  | 'technologies'
-  | 'frontendCodeLink'
-  | 'backendCodeLink'
-> & { _id?: string };
+export type ProjectSlide = {
+  id: string;
+  title: string;
+  img: string;
+  live?: string;
+  technologies?: string[];
+  frontendCodeLink?: string;
+  backendCodeLink?: string;
+  _id?: string;
+};
 
 export const ProjectImages = ({ projects }: { projects?: ProjectSlide[] }) => {
   if (!projects || projects.length === 0) {

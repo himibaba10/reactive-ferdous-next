@@ -1,7 +1,4 @@
-'use client';
-
 import type { ReactNode } from 'react';
-import * as m from 'motion/react-m';
 import { MdArrowOutward } from 'react-icons/md';
 
 type PrimaryButtonProps = {
@@ -16,6 +13,12 @@ type PrimaryButtonProps = {
   onClick?: () => void;
 };
 
+const baseClass =
+  'group uppercase bg-secondary border border-black text-black px-3 sm:px-10 py-3 rounded-full font-medium inline-flex items-center justify-center relative shadow-[0_0_0_rgba(232,248,139,1)] transition-shadow duration-300 hover:shadow-[2px_2px_0_rgba(232,248,139,1)]';
+
+/**
+ * CSS hover affordance — no Motion on the critical path (hero CTA).
+ */
 const PrimaryButton = ({
   children,
   type = 'button',
@@ -27,67 +30,40 @@ const PrimaryButton = ({
   className = '',
   onClick,
 }: PrimaryButtonProps) => {
-  const icon = {
-    changePosition: {
-      scale: 1,
-    },
-  };
-  const span = {
-    changePosition: {
-      left: '1rem',
-    },
-  };
-  const container = {
-    changePosition: { boxShadow: '2px 2px 0px rgba(232,248,139,1)' },
-  };
+  const content = (
+    <>
+      <span className="bg-primary p-2 rounded-full absolute left-1 text-white scale-0 group-hover:scale-100 transition-transform duration-300">
+        <MdArrowOutward size={25} />
+      </span>
+      <span className="relative transition-transform duration-300 group-hover:translate-x-4">
+        {children}
+      </span>
+    </>
+  );
 
   if (href) {
     return (
-      <m.a
+      <a
         href={href}
         target={target}
         rel={rel}
         onClick={onClick}
-        initial={{ boxShadow: '0px 0px 0px rgba(232,248,139,1)' }}
-        variants={container}
-        whileHover="changePosition"
-        className={`${width} uppercase bg-secondary border border-black text-black px-3 sm:px-10 py-3 rounded-full font-medium inline-flex items-center justify-center relative ${className}`}
+        className={`${width} ${baseClass} ${className}`}
       >
-        <m.span
-          variants={icon}
-          initial={{ scale: 0 }}
-          className="bg-primary p-2 rounded-full absolute left-1 text-white"
-        >
-          <MdArrowOutward size={25} />
-        </m.span>
-        <m.span initial={{ left: 0 }} variants={span} className="relative">
-          {children}
-        </m.span>
-      </m.a>
+        {content}
+      </a>
     );
   }
 
   return (
-    <m.button
+    <button
       type={type}
       disabled={disabled}
       onClick={onClick}
-      initial={{ boxShadow: '0px 0px 0px rgba(232,248,139,1)' }}
-      variants={container}
-      whileHover="changePosition"
-      className={`${width} uppercase bg-secondary border border-black text-black px-3 sm:px-10 py-3 rounded-full font-medium inline-flex items-center justify-center relative ${className}`}
+      className={`${width} ${baseClass} ${className}`}
     >
-      <m.span
-        variants={icon}
-        initial={{ scale: 0 }}
-        className="bg-primary p-2 rounded-full absolute left-1 text-white"
-      >
-        <MdArrowOutward size={25} />
-      </m.span>
-      <m.span initial={{ left: 0 }} variants={span} className="relative">
-        {children}
-      </m.span>
-    </m.button>
+      {content}
+    </button>
   );
 };
 

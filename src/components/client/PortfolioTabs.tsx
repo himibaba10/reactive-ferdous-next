@@ -1,14 +1,21 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import type { ProjectDoc } from '@/lib/data';
-import { ProjectImages } from '@/components/ProjectImages';
+import { ProjectImages, type ProjectSlide } from '@/components/ProjectImages';
 
-type PortfolioTabsProps = {
-  projects: ProjectDoc[];
+export type PortfolioProject = ProjectSlide & {
+  category?: string;
 };
 
-export default function PortfolioTabs({ projects }: PortfolioTabsProps) {
+type PortfolioTabsProps = {
+  projects: PortfolioProject[];
+  initialCount?: number;
+};
+
+export default function PortfolioTabs({
+  projects,
+  initialCount = 9,
+}: PortfolioTabsProps) {
   const categories = useMemo(() => {
     const unique = [
       ...new Set(
@@ -19,11 +26,20 @@ export default function PortfolioTabs({ projects }: PortfolioTabsProps) {
   }, [projects]);
 
   const [activeTab, setActiveTab] = useState('All');
+  const [visibleCount, setVisibleCount] = useState(initialCount);
 
   const filteredProjects =
     activeTab === 'All'
       ? projects
       : projects.filter((project) => project.category === activeTab);
+
+  const visibleProjects = filteredProjects.slice(0, visibleCount);
+  const hasMore = filteredProjects.length > visibleCount;
+
+  const selectTab = (category: string) => {
+    setActiveTab(category);
+    setVisibleCount(initialCount);
+  };
 
   return (
     <>
@@ -33,7 +49,7 @@ export default function PortfolioTabs({ projects }: PortfolioTabsProps) {
             <button
               key={category}
               type="button"
-              onClick={() => setActiveTab(category)}
+              onClick={() => selectTab(category)}
               className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border border-transparent ${
                 activeTab === category
                   ? 'bg-black text-white dark:bg-white dark:text-black shadow-md scale-105'
@@ -46,8 +62,17 @@ export default function PortfolioTabs({ projects }: PortfolioTabsProps) {
         </div>
       )}
       <div className="w-full">
-        <ProjectImages projects={filteredProjects} />
+        <ProjectImages projects={visibleProjects} />
       </div>
+      {hasMore ? (
+        <button
+          type="button"
+          onClick={() => setVisibleCount((n) => n + initialCount)}
+          className="mt-10 px-8 py-3 rounded-full border border-zinc-600 text-zinc-200 hover:border-secondary hover:text-secondary transition-colors text-sm font-semibold uppercase tracking-wide"
+        >
+          Show more projects
+        </button>
+      ) : null}
     </>
   );
 }

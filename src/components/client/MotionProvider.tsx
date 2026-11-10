@@ -1,18 +1,20 @@
 'use client';
 
-import { LazyMotion, domAnimation, MotionConfig } from 'motion/react';
+import { LazyMotion, MotionConfig } from 'motion/react';
 import type { ReactNode } from 'react';
 
 /**
- * Sync `domAnimation` (not async import): async features left `initial`
- * styles stuck (e.g. opacity:0 headings) until the chunk loaded.
- * Sync still uses slim `m` components (~5kb + features) vs full `motion` (~43kb).
+ * Async `domAnimation` — home hero/headings/CTAs are CSS now, so we no longer
+ * need sync features on the critical path. Below-fold Motion islands hydrate
+ * when this chunk arrives.
  * @see https://motion.dev/docs/react-reduce-bundle-size
- * @see https://motion.dev/docs/performance
  */
+const loadFeatures = () =>
+  import('motion/react').then((mod) => mod.domAnimation);
+
 export default function MotionProvider({ children }: { children: ReactNode }) {
   return (
-    <LazyMotion features={domAnimation} strict>
+    <LazyMotion features={loadFeatures} strict>
       <MotionConfig reducedMotion="user">{children}</MotionConfig>
     </LazyMotion>
   );

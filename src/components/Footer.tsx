@@ -16,6 +16,7 @@ async function Footer() {
       </span>
       <Link
         href="/privacy"
+        prefetch={false}
         className="underline underline-offset-2 hover:opacity-70 transition-opacity"
       >
         Privacy &amp; Cookies

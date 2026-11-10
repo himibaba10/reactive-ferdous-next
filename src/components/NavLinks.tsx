@@ -62,7 +62,7 @@ const NavLinks = ({ active, setActive, showMenu, setShowMenu }) => {
       }
     }
 
-    // For route links
+    // For route links — skip eager prefetch on service/nav noise.
     return (
       <Link
         onClick={() => {
@@ -74,6 +74,7 @@ const NavLinks = ({ active, setActive, showMenu, setShowMenu }) => {
         className={`${active === link.name ? 'text-secondary' : 'text-white'} hover:text-secondary transition-colors`}
         key={link.url}
         href={link.url}
+        prefetch={false}
       >
         {link.name}
       </Link>
@@ -99,6 +100,7 @@ const NavLinks = ({ active, setActive, showMenu, setShowMenu }) => {
               <Link
                 key={link.url}
                 href={link.url}
+                prefetch={false}
                 onClick={() => {
                   setActive(link.name);
                   window.scrollTo(0, 0);

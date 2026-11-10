@@ -6,13 +6,13 @@
   --color-gray: #1d2237;
 }
 
-/* next/font local sets --font-inter / --font-bebas on <html> */
+/* Bebas = display; Inter loads without preload (system UI until ready). */
 .font-inter {
-  font-family: var(--font-inter), "Inter", sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 .font-bebas {
-  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-family: var(--font-bebas), "Bebas Neue", ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
@@ -56,11 +56,106 @@ body {
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-25%);
+    /* One cloned set → scroll exactly half the track */
+    transform: translateX(-50%);
   }
 }
 
 .animate-logo-marquee {
   animation: logo-marquee 60s linear infinite;
   width: max-content;
+}
+
+@keyframes heading-in {
+  from {
+    transform: translateY(0.4rem);
+    opacity: 0.88;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-heading-in {
+  animation: heading-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hero-growth {
+  from {
+    transform: scaleX(0);
+    opacity: 0.7;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.animate-hero-growth {
+  animation: hero-growth 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes hero-glow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-hero-glow {
+  animation: hero-glow 0.5s ease-in-out both;
+}
+
+@keyframes hero-slide-left {
+  from {
+    transform: translateX(-23rem) rotate(-5deg);
+  }
+  to {
+    transform: translateX(0) rotate(-5deg);
+  }
+}
+
+.animate-hero-slide-left {
+  animation: hero-slide-left 1s ease-in-out both;
+}
+
+@keyframes hero-slide-right {
+  from {
+    transform: translateX(22rem) rotate(7deg);
+  }
+  to {
+    transform: translateX(0) rotate(7deg);
+  }
+}
+
+.animate-hero-slide-right {
+  animation: hero-slide-right 1s ease-in-out both;
+}
+
+@keyframes about-intro {
+  from {
+    transform: translateX(-2rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-about-intro {
+  animation: about-intro 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-logo-marquee,
+  .animate-heading-in,
+  .animate-hero-growth,
+  .animate-hero-glow,
+  .animate-hero-slide-left,
+  .animate-hero-slide-right,
+  .animate-about-intro {
+    animation: none !important;
+  }
 }

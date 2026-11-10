@@ -13,7 +13,7 @@ const Hero = () => {
       className='mt-14 overflow-hidden relative'
     >
       <HeroInfo />
-      <div className='relative mt-10 sm:mt-28 text-center'>
+      <div className='relative mt-8 sm:mt-16 text-center'>
         <HeroLeftImage />
         <HeroRightImage />
         <HeroImage />

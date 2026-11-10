@@ -1,28 +1,19 @@
-'use client';
-
 import Image from 'next/image';
-import * as m from 'motion/react-m';
 import clientReviewImage from '@/assets/Client Review.webp';
 
-/** Animate `x` (transform), not `left` — avoids layout thrashing. */
 export default function HeroLeftImage() {
   return (
-    <m.div
-      className="absolute left-[-2rem] top-0"
-      initial={{ x: '-23rem', rotate: -5 }}
-      whileInView={{ x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1, ease: 'easeInOut' }}
-    >
+    <div className="absolute left-[-2rem] top-0 animate-hero-slide-left">
       <Image
         src={clientReviewImage}
         alt="Client review screenshot from a recent web development project"
         width={404}
         height={238}
+        sizes="404px"
         loading="lazy"
         fetchPriority="low"
-        style={{ width: 'auto', height: 'auto' }}
+        className="w-[404px] max-w-none h-auto"
       />
-    </m.div>
+    </div>
   );
 }

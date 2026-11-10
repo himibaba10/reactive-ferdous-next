@@ -1,6 +1,3 @@
-'use client';
-
-import * as m from 'motion/react-m';
 import AnimatedHeading from '@/components/client/AnimatedHeading';
 import PrimaryButton from '@/ui/PrimaryButton';
 
@@ -14,13 +11,7 @@ export default function HeroInfo() {
         >
           We Build Web Apps That
         </AnimatedHeading>{' '}
-        {/* scaleX instead of width — compositor-friendly (Motion perf docs) */}
-        <m.div
-          className="text-nowrap mx-auto py-3 origin-left overflow-hidden"
-          initial={{ scaleX: 0, opacity: 0.6 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <div className="text-nowrap mx-auto py-3 origin-left overflow-hidden animate-hero-growth">
           Drive{' '}
           <span
             className="px-5 rounded-xl text-black bg-secondary"
@@ -29,7 +20,7 @@ export default function HeroInfo() {
             Business
           </span>{' '}
           Growth
-        </m.div>
+        </div>
       </h1>
 
       <p className="mt-6 max-w-2xl text-zinc-400 text-lg sm:text-xl">

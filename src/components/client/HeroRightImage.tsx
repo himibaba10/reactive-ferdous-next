@@ -1,28 +1,19 @@
-'use client';
-
 import Image from 'next/image';
-import * as m from 'motion/react-m';
 import expertiseImg from '@/assets/My expertise image.webp';
 
-/** Animate `x` (transform), not `right` — avoids layout thrashing. */
 export default function HeroRightImage() {
   return (
-    <m.div
-      className="absolute right-[-3rem] top-64 sm:top-20"
-      initial={{ x: '22rem', rotate: 7 }}
-      whileInView={{ x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1, ease: 'easeInOut' }}
-    >
+    <div className="absolute right-[-3rem] top-64 sm:top-20 animate-hero-slide-right">
       <Image
         src={expertiseImg}
         alt="Ferdous Ahmed web development and design expertise"
         width={405}
         height={238}
+        sizes="405px"
         loading="lazy"
         fetchPriority="low"
-        style={{ width: 'auto', height: 'auto' }}
+        className="w-[405px] max-w-none h-auto"
       />
-    </m.div>
+    </div>
   );
 }

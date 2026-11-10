@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`h-full ${inter.variable} ${bebasNeue.variable}`}
     >
-      <body className={inter.className}>{children}</body>
+      <body className={`font-inter ${inter.className}`}>{children}</body>
     </html>
   );
 }

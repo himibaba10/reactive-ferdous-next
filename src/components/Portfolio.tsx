@@ -2,8 +2,20 @@ import Heading from '@/ui/Heading';
 import PortfolioTabs from '@/components/client/PortfolioTabs';
 import { getWebProjects } from '@/lib/data';
 
+const HOME_PORTFOLIO_INITIAL = 9;
+
 export default async function Portfolio() {
   const projects = await getWebProjects();
+
+  // Lean props only — avoids shipping full Mongo docs into the client bundle.
+  const leanProjects = projects.map((p) => ({
+    id: p.id,
+    title: p.title,
+    img: p.img,
+    live: p.live,
+    category: p.category,
+    technologies: p.technologies,
+  }));
 
   return (
     <section
@@ -16,7 +28,7 @@ export default async function Portfolio() {
           Take a look at how we&apos;ve helped businesses scale and improve their digital presence
           with custom-built solutions.
         </p>
-        <PortfolioTabs projects={projects} />
+        <PortfolioTabs projects={leanProjects} initialCount={HOME_PORTFOLIO_INITIAL} />
       </div>
     </section>
   );

@@ -1,22 +1,9 @@
-'use client';
-
-import * as m from 'motion/react-m';
 import AnimatedHeading from '@/components/client/AnimatedHeading';
 import PrimaryButton from '@/ui/PrimaryButton';
 
-/**
- * Avoid opacity:0 + delayed whileInView — on Next that leaves this section
- * blank until hydration AND a deep scroll into view (margin: -100px).
- * Keep content readable immediately; only slide in.
- */
 export default function AboutIntro() {
   return (
-    <m.div
-      initial={{ x: -32 }}
-      whileInView={{ x: 0 }}
-      viewport={{ once: true, amount: 0.2, margin: '80px' }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <div className="animate-about-intro">
       <AnimatedHeading className="font-bebas text-5xl sm:text-7xl text-secondary mb-6 text-left">
         Who Are We?
       </AnimatedHeading>
@@ -34,6 +21,6 @@ export default function AboutIntro() {
       <a href="#portfolio">
         <PrimaryButton>SEE OUR PROJECTS</PrimaryButton>
       </a>
-    </m.div>
+    </div>
   );
 }
