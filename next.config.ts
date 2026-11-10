@@ -30,6 +30,8 @@ for (const host of [r2PublicHost, cdnHost]) {
 }
 
 const nextConfig: NextConfig = {
+  // Match canonical URLs in src/lib/seo.ts (no trailing slash).
+  trailingSlash: false,
   cacheComponents: true,
   // Avoid eager RSC prefetch storms for every in-viewport Link on mobile.
   partialPrefetching: false,

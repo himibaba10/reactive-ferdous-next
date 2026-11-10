@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "reactive-ferdous-next.vercel.app" }],
+      "destination": "https://portfolio.reactiveferdous.com/:path*",
+      "permanent": true
+    }
+  ]
+}

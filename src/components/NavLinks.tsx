@@ -19,6 +19,7 @@ const NavLinks = ({ active, setActive, showMenu, setShowMenu }) => {
 
   const mainLinks = [
     { name: 'Case Studies', url: '/work' },
+    { name: 'Blog', url: '/blog' },
     { name: 'About', url: '/#about' },
   ];
 

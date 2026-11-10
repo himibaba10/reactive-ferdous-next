@@ -1,14 +1,13 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { createPageMetadata, SITE_URL } from '@/lib/seo';
+import { createPageMetadata, SITE_DESCRIPTION, SITE_URL } from '@/lib/seo';
 import { bebasNeue, inter } from '@/lib/fonts';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   ...createPageMetadata({
     title: 'Ferdous Ahmed | Web Developer & Designer',
-    description:
-      'We partner with businesses to deliver digital solutions that solve real problems. Specializing in Web Development, Graphic Design, and Figma Design.',
+    description: SITE_DESCRIPTION,
     path: '/',
   }),
   icons: {

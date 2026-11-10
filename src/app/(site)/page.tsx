@@ -2,18 +2,18 @@ import About from '@/components/About';
 import Contact from '@/components/Contact';
 import FAQ from '@/components/FAQ';
 import Hero from '@/components/Hero';
+import JsonLd from '@/components/JsonLd';
 import LeadBanner from '@/components/LeadBanner';
 import LogoSlider from '@/components/LogoSlider';
 import Portfolio from '@/components/Portfolio';
 import Reviews from '@/components/Reviews';
 import Services from '@/components/Services';
-import { createPageMetadata } from '@/lib/seo';
+import { buildHomeJsonLd, createPageMetadata, SITE_DESCRIPTION } from '@/lib/seo';
 import { Suspense } from 'react';
 
 export const metadata = createPageMetadata({
   title: 'Ferdous Ahmed | Web Developer & Designer',
-  description:
-    'We partner with businesses to deliver digital solutions that solve real problems. Specializing in Web Development, Graphic Design, and Figma Design.',
+  description: SITE_DESCRIPTION,
   path: '/',
 });
 
@@ -26,6 +26,7 @@ const sectionFallback = (
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={buildHomeJsonLd()} />
       <Hero />
       <Suspense fallback={sectionFallback}>
         <LogoSlider />

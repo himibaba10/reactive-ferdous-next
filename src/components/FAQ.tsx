@@ -1,5 +1,6 @@
 import Heading from '@/ui/Heading';
 import FAQList, { type FaqItem } from '@/components/client/FAQList';
+import JsonLd from '@/components/JsonLd';
 
 const defaultFaqs: FaqItem[] = [
   {
@@ -35,21 +36,18 @@ export default function FAQ({
 }) {
   return (
     <section id="faq" className="section my-20 py-20 w-full relative">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: faqs.map((faq) => ({
-              '@type': 'Question',
-              name: faq.question,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: faq.answer,
-              },
-            })),
-          }),
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.answer,
+            },
+          })),
         }}
       />
       <div className="text-center mb-16">

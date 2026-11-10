@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Heading from '@/ui/Heading';
+import JsonLd from '@/components/JsonLd';
 import { MdFormatQuote } from 'react-icons/md';
 import { getReviews, type ReviewDoc } from '@/lib/data';
 import { SITE_URL } from '@/lib/seo';
@@ -57,7 +58,9 @@ export default async function Reviews() {
               aggregateRating: {
                 '@type': 'AggregateRating',
                 ratingValue: Number(averageRating),
-                reviewCount: textReviews.length,
+                // Count only reviews that contributed a numeric rating
+                reviewCount: ratings.length,
+                ratingCount: ratings.length,
                 bestRating: 5,
                 worstRating: 1,
               },
@@ -71,12 +74,7 @@ export default async function Reviews() {
       id="reviews"
       className="section my-20 py-20 w-full bg-zinc-900/30 rounded-3xl relative overflow-hidden"
     >
-      {reviewSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
-        />
-      )}
+      {reviewSchema ? <JsonLd data={reviewSchema} /> : null}
 
       <div className="absolute top-10 left-10 text-zinc-800 opacity-20">
         <MdFormatQuote size={120} />
