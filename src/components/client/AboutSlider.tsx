@@ -11,10 +11,10 @@ export default function AboutSlider({ images }: { images: AboutSlideImage[] }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: '-100px' }}
-      transition={{ duration: 0.6, delay: 0.2 }}
+      initial={{ x: 32 }}
+      whileInView={{ x: 0 }}
+      viewport={{ once: true, amount: 0.2, margin: '80px' }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       className="relative h-[300px] sm:h-[450px] w-full hidden md:block"
     >
       {ordered.map((img, idx) => {

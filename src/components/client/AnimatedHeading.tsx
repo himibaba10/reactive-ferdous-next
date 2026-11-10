@@ -23,12 +23,13 @@ export default function AnimatedHeading({
       {children.split('').map((char, index) => (
         <motion.span
           key={`${char}-${index}`}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
+          // Fire early so headings aren't stuck dim waiting for a deep scroll
+          viewport={{ once: true, amount: 0.2, margin: '60px' }}
           transition={{
-            delay: index * 0.04,
-            duration: 0.35,
+            delay: Math.min(index * 0.03, 0.45),
+            duration: 0.28,
             ease: [0.22, 1, 0.36, 1],
           }}
           className="inline-block font-bebas"
