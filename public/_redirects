@@ -1,0 +1,6 @@
+/admin/*      /app.html    200
+/dashboard/*  /app.html    200
+
+# Do NOT add a /* → 404.html catch-all here.
+# That rule shadows /.netlify/functions/* and breaks serverless functions.
+# Unknown URLs still get a real 404 via dist/404.html (Netlify built-in).

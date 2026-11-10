@@ -1,0 +1,38 @@
+# Ferdous Ahmed Portfolio
+
+> Freelance web developer and designer specializing in WordPress, custom web apps, graphic design, Figma UI/UX, and logo design.
+
+Portfolio site for Ferdous Ahmed. Use the links below to discover services, contact details, and public pages.
+
+## Pages
+
+- [Home](https://portfolio.reactiveferdous.com/): Main portfolio landing page
+- [Web Development](https://portfolio.reactiveferdous.com/services/web-development/): Custom apps, WordPress, and SEO-focused websites
+- [Graphic Design](https://portfolio.reactiveferdous.com/services/graphic-design/): Branding, marketing, and visual identity work
+- [Figma UI/UX Design](https://portfolio.reactiveferdous.com/services/figma-design/): Interface design and interactive prototypes
+- [Logo Design](https://portfolio.reactiveferdous.com/services/logo-design/): Custom brand marks and logotypes
+- [Case Studies](https://portfolio.reactiveferdous.com/work/): Index of project case studies
+- [Case study: Simply Beds](https://portfolio.reactiveferdous.com/work/simply-beds/): WordPress/WooCommerce performance rebuild — load time from over 6 seconds to under 1
+- [Case study: LRA Services](https://portfolio.reactiveferdous.com/work/lra-services/): UK water hygiene firm's first website, built from scratch on a lean plugin stack
+- [Privacy & Cookies](https://portfolio.reactiveferdous.com/privacy/): How this site handles data, and the cookie choices available
+- [Sitemap](https://portfolio.reactiveferdous.com/sitemap.xml): Machine-readable list of public URLs
+
+## Documents
+
+- [One-page overview (PDF)](https://portfolio.reactiveferdous.com/one-page-overview.pdf): Experience, results and references on a single page
+- [Case study: Simply Beds (PDF)](https://portfolio.reactiveferdous.com/case-studies/simply-beds.pdf): WooCommerce rebuild — 6s to under 1s, 80+ plugins to 25
+- [Case study: LRA Services (PDF)](https://portfolio.reactiveferdous.com/case-studies/lra-services.pdf): First website built from scratch on a three-plugin stack
+
+## Contact
+
+- [WhatsApp](https://wa.me/8801997722621): Primary contact for project inquiries
+- [Book a call](https://calendly.com/himibaba/new-meeting): Free 30-minute consultation
+- [Email](mailto:contact@reactiveferdous.com): contact@reactiveferdous.com
+- [LinkedIn](https://www.linkedin.com/in/ferdous-ahmed-6535b0202/): Professional profile
+- [Fiverr](https://www.fiverr.com/ferdoushimel): Freelance services profile
+
+## Optional
+
+- [Facebook](https://www.facebook.com/ferdoushimel10): Social profile
+- [Telegram](https://t.me/himibaba10): Messaging contact
+- [GitHub](https://www.github.com/himibaba10): Code samples and open work

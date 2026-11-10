@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: rgba(11, 17, 35, 1);
+  --color-secondary: rgba(232, 248, 139, 1);
+  --color-gray: #1d2237;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* next/font local sets --font-inter / --font-bebas on <html> */
+.font-inter {
+  font-family: var(--font-inter), "Inter", sans-serif;
+}
+
+.font-bebas {
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+}
+
+html {
+  @apply scroll-smooth overflow-x-hidden;
+}
+
+::selection {
+  @apply bg-secondary text-primary;
+}
+
+html,
+a,
+button,
+a:hover,
+button:hover {
+  cursor: url("../assets/custom cursor.png"), auto;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-primary via-secondary to-primary;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-primary text-white min-h-full flex flex-col;
+}
+
+.section {
+  @apply mx-auto max-w-7xl px-2.5 md:px-5 lg:px-10;
+}
+
+.gradient {
+  @apply bg-gradient-to-r from-[rgba(55,15,123,1)] to-[rgba(57,124,254,1)];
+}
+
+@keyframes logo-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+.animate-logo-marquee {
+  animation: logo-marquee 60s linear infinite;
+  width: max-content;
 }

@@ -1,0 +1,14 @@
+{
+  "name": "Ferdous Ahmed — Web Developer & Designer",
+  "short_name": "Ferdous",
+  "description": "Freelance web developer and designer specializing in WordPress, custom web apps, graphic design, Figma UI/UX, and logo design.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b1123",
+  "theme_color": "#0b1123",
+  "icons": [
+    { "src": "/favicon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/favicon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
